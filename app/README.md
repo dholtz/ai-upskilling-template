@@ -2,7 +2,9 @@
 
 A production-ready Flask application framework designed for AI/ML upskilling programs. This starter template provides a solid foundation for building and deploying AI-powered applications.
 
-> **📌 This is a template repository.** See [docs/TEMPLATE_USAGE.md](../docs/TEMPLATE_USAGE.md) for instructions on how to use this template for new projects.
+> **📌 This is a template repository.** 
+> 
+> **Students:** Start with [docs/STUDENT_QUICK_START.md](../docs/STUDENT_QUICK_START.md) for a quick overview, then read [docs/TEMPLATE_USAGE.md](../docs/TEMPLATE_USAGE.md) for detailed instructions.
 
 ## Features
 
@@ -348,14 +350,34 @@ If you get import errors:
 
 ## 📚 Documentation
 
-All documentation is located in the [`docs/`](../docs/) directory. See [docs/README.md](../docs/README.md) for a complete index.
+All documentation is located in the [`docs/`](../docs/) directory.
 
-**Quick links:**
-- **[TEMPLATE_USAGE.md](../docs/TEMPLATE_USAGE.md)** - How to use this template for new projects
-- **[LOCAL_SETUP.md](../docs/LOCAL_SETUP.md)** - Local development setup guide
-- **[SECURITY.md](../docs/SECURITY.md)** - Security best practices and checklist
+### 📖 For Students - Start Here!
+
+**Essential reading (in order):**
+
+1. **[TEMPLATE_USAGE.md](../docs/TEMPLATE_USAGE.md)** ⭐ **START HERE**
+   - How to create a new project from this template
+   - Step-by-step setup instructions
+   - Project customization guide
+
+2. **[LOCAL_SETUP.md](../docs/LOCAL_SETUP.md)**
+   - How to run the app on your local machine
+   - Testing your application
+   - Development workflow
+
+3. **[SECURITY.md](../docs/SECURITY.md)** ⚠️ **IMPORTANT**
+   - What never to commit to git
+   - Security best practices
+   - Pre-commit checklist
+
+### 📋 For Instructors
+
 - **[TEMPLATE_SETUP.md](../docs/TEMPLATE_SETUP.md)** - How to publish/maintain this template
+- **[SHARING_WITH_CLASS.md](../docs/SHARING_WITH_CLASS.md)** - Sharing with your class
 - **[CHANGELOG.md](../docs/CHANGELOG.md)** - Template version history
+
+See [docs/README.md](../docs/README.md) for a complete documentation index.
 
 ## Resources
 
