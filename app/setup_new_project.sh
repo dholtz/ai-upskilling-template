@@ -132,20 +132,55 @@ else
     echo "⏭️  Skipping git initialization (SKIP_GIT_INIT=true)"
 fi
 
+# Clean up template-specific documentation files
+if [ -d "../docs" ]; then
+    echo "📝 Cleaning up template-specific documentation..."
+    cd ../docs
+    TEMPLATE_DOCS=(
+        "TEMPLATE_USAGE.md"
+        "TEMPLATE_SETUP.md"
+        "STUDENT_QUICK_START.md"
+        "SHARING_WITH_CLASS.md"
+        "CHANGELOG.md"
+        "CREATE_REPO_FIRST.md"
+        "GITHUB_AUTH.md"
+        "PUSH_TO_GITHUB.md"
+    )
+    
+    REMOVED_COUNT=0
+    for doc in "${TEMPLATE_DOCS[@]}"; do
+        if [ -f "$doc" ]; then
+            rm "$doc"
+            REMOVED_COUNT=$((REMOVED_COUNT + 1))
+        fi
+    done
+    
+    # Remove template-specific README if it exists and is template-focused
+    if [ -f "README.md" ] && grep -q "template\|Template\|TEMPLATE" README.md 2>/dev/null; then
+        rm README.md
+        REMOVED_COUNT=$((REMOVED_COUNT + 1))
+    fi
+    
+    if [ $REMOVED_COUNT -gt 0 ]; then
+        echo "   ✅ Removed $REMOVED_COUNT template-specific documentation file(s)"
+    fi
+    
+    cd - > /dev/null
+fi
+
 echo ""
 echo "✅ Setup complete!"
 echo ""
 echo "📋 Next steps:"
 echo "  1. Review and update README.md with project-specific details"
-echo "  2. Update requirements.txt with your needed libraries"
+echo "  2. Remove any remaining template-specific files from docs/ if needed"
+echo "  3. Update requirements.txt with your needed libraries"
 if [ "$SKIP_ENV_SETUP" != "true" ]; then
-    echo "  3. Edit .env with your configuration (if needed)"
+    echo "  4. Edit .env with your configuration (if needed)"
 fi
-echo "  4. Run 'make install' to set up the environment"
-echo "  5. Run 'make run' to test the application"
+echo "  5. Run 'make install' to set up the environment"
+echo "  6. Run 'make run' to test the application"
 echo ""
 echo "💡 Tip: You can customize the setup using environment variables:"
 echo "   PROJECT_NAME=my-project PROJECT_DESCRIPTION='My Description' $0"
-echo ""
-echo "For more information, see docs/TEMPLATE_USAGE.md"
 
