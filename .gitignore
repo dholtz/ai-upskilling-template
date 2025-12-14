@@ -38,6 +38,7 @@ ENV/
 .env.local
 .env.*.local
 .flaskenv
+.setup.env
 *.secret
 *.key
 secrets/

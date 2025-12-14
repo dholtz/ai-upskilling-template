@@ -9,11 +9,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # --- Add your corporate CA into the image trust store ---
-# Certificate file is in the ai_upskilling directory for portability
-# Build from parent directory (ai_upskilling): 
-#   docker build -f getting_started/app/Dockerfile -t myapp .
+# Certificate file should be in the build context directory (one level up from app/)
+# Build from parent directory (where certificate file is located): 
+#   docker build -f app/Dockerfile -t myapp .
 # Or specify custom cert path:
-#   docker build --build-arg CERT_FILE=Zscaler_Root_CA.cer -f getting_started/app/Dockerfile -t myapp .
+#   docker build --build-arg CERT_FILE=your-cert.cer -f app/Dockerfile -t myapp .
 ARG CERT_FILE=Zscaler_Root_CA.cer
 # Copy cert file (must be in build context - Docker cannot copy from outside)
 COPY ${CERT_FILE} /tmp/cert.cer
@@ -37,9 +37,13 @@ ENV SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt \
 RUN mkdir -p /etc/pip && printf "[global]\ncert = /etc/ssl/certs/ca-certificates.crt\n" > /etc/pip/pip.conf
 
 WORKDIR /app
-COPY getting_started/app/requirements.txt ./
+# Copy requirements and install dependencies
+# Note: This assumes the build context is the parent directory (one level up from app/)
+# When building, run: docker build -f app/Dockerfile -t myapp .
+# The COPY paths are relative to the build context (parent directory)
+COPY app/requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
-COPY getting_started/app/ .
+COPY app/ .
 
 EXPOSE 5000
 

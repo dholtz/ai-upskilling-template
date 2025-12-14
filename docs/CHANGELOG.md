@@ -16,7 +16,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Health check endpoints
 - Environment variable configuration
 - Comprehensive documentation (README, LOCAL_SETUP, TEMPLATE_USAGE)
-- Setup script for new projects
+- Setup script for new projects with environment variable support
+  - Supports command-line arguments, environment variables, or .setup.env file
+  - Automatically updates app.py and README.md with project details
+  - Cross-platform compatible (macOS and Linux)
 - Pre-commit security checks
 
 ### Features
@@ -31,10 +34,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Documentation
 - README.md - Main project documentation
-- LOCAL_SETUP.md - Local development guide
-- SECURITY.md - Security best practices
-- TEMPLATE_USAGE.md - How to use this template
-- CHANGELOG.md - This file
+- docs/LOCAL_SETUP.md - Local development guide
+- docs/SECURITY.md - Security best practices
+- docs/TEMPLATE_USAGE.md - How to use this template
+- docs/CHANGELOG.md - This file
 
 ---
 

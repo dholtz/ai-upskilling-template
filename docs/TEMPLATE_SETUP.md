@@ -42,7 +42,7 @@ This guide explains how to prepare and share this repository as a template for t
 5. **Share with Team**:
    - Share the repository URL
    - Instruct users to click "Use this template" button
-   - Point them to `TEMPLATE_USAGE.md`
+   - Point them to `docs/TEMPLATE_USAGE.md`
 
 ### Option 2: Organization Template (Best for Large Programs)
 
@@ -93,9 +93,9 @@ Before sharing the template, ensure:
 
 - [ ] **Documentation is complete**
   - README.md is clear and helpful
-  - TEMPLATE_USAGE.md explains how to use it
-  - SECURITY.md is included
-  - LOCAL_SETUP.md is included
+   - docs/TEMPLATE_USAGE.md explains how to use it
+   - docs/SECURITY.md is included
+   - docs/LOCAL_SETUP.md is included
 
 - [ ] **Example files are safe to commit**
   - `.env.example` exists (not `.env`)
@@ -174,13 +174,13 @@ Hi Team,
 I've created a starter template for our AI upskilling projects. 
 
 📍 Repository: [link]
-📖 Usage Guide: See TEMPLATE_USAGE.md in the repo
+📖 Usage Guide: See docs/TEMPLATE_USAGE.md in the repo
 
 To start a new project:
 1. Go to the repository
 2. Click "Use this template"
 3. Create your new repository
-4. Follow TEMPLATE_USAGE.md
+4. Follow docs/TEMPLATE_USAGE.md
 
 The template includes:
 - Flask application structure
@@ -209,7 +209,7 @@ For each new project, use our starter template:
 3. Name your project
 4. Clone and start coding!
 
-See [TEMPLATE_USAGE.md](TEMPLATE_USAGE.md) for detailed instructions.
+See [docs/TEMPLATE_USAGE.md](TEMPLATE_USAGE.md) for detailed instructions.
 ```
 
 ## 🔄 Maintaining the Template
@@ -243,7 +243,7 @@ See [TEMPLATE_USAGE.md](TEMPLATE_USAGE.md) for detailed instructions.
    ```
 
 4. **Notify users**:
-   - Update CHANGELOG.md
+   - Update docs/CHANGELOG.md
    - Announce updates to team
 
 ### Versioning Strategy

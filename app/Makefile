@@ -6,8 +6,13 @@ DOCKER_IMAGE=$(APP_NAME)
 DOCKER_TAG=latest
 PORT=5000
 CERT_FILE=Zscaler_Root_CA.cer
-PARENT_DIR=../../..
-APP_DIR=getting_started/app
+# Docker build configuration
+# PARENT_DIR: Directory containing your certificate file (one level up from app/)
+# APP_DIR: Relative path from PARENT_DIR to this app directory
+# These assume the standard template structure: <project>/app/
+# Update if your project structure differs
+PARENT_DIR=..
+APP_DIR=app
 
 # Colors for output
 CYAN=\033[0;36m

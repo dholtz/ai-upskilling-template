@@ -53,15 +53,30 @@ git remote set-url origin <new-repo-url>
 
 After creating your project from the template:
 
-- [ ] **Update README.md**
-  - Change project name and description
-  - Update any project-specific instructions
-  - Remove template-specific sections if needed
-
-- [ ] **Update app.py**
-  - Change the welcome message
-  - Update version number
-  - Customize application name
+- [ ] **Customize project name and details** (recommended)
+  ```bash
+  cd app
+  # Quick setup - just provide project name
+  ./setup_new_project.sh my-project-name
+  
+  # Or use environment variables for full control
+  PROJECT_NAME=my-project \
+  PROJECT_DESCRIPTION="My AI Project Description" \
+  PROJECT_AUTHOR="Your Name" \
+  PROJECT_VERSION=0.1.0 \
+  ./setup_new_project.sh
+  
+  # Or use .setup.env file for reusable configuration
+  cp .setup.env.example .setup.env
+  # Edit .setup.env with your values, then:
+  source .setup.env && ./setup_new_project.sh
+  ```
+  
+  The setup script will automatically:
+  - Update `app.py` with your project name
+  - Update `README.md` with your project details
+  - Create `.env` file from template (if needed)
+  - Initialize git repository (if not already done)
 
 - [ ] **Review requirements.txt**
   - Uncomment AI/ML libraries you'll need
@@ -72,6 +87,24 @@ After creating your project from the template:
   ```bash
   cd app
   make install
+  ```
+
+- [ ] **Customize project (optional)**
+  ```bash
+  # Quick setup with script
+  cd app
+  ./setup_new_project.sh my-project-name
+  
+  # Or use environment variables for more control
+  PROJECT_NAME=my-project \
+  PROJECT_DESCRIPTION="My AI Project" \
+  PROJECT_AUTHOR="Your Name" \
+  ./setup_new_project.sh
+  
+  # Or create .setup.env file for reusable configuration
+  cp .setup.env.example .setup.env
+  # Edit .setup.env with your values
+  source .setup.env && ./setup_new_project.sh
   ```
 
 - [ ] **Configure certificates** (if needed)
@@ -106,6 +139,42 @@ After creating your project from the template:
   ```
 
 ## 🎯 Project-Specific Customization
+
+### Using the Setup Script
+
+The `setup_new_project.sh` script makes it easy to customize your project:
+
+**Basic usage:**
+```bash
+cd app
+./setup_new_project.sh my-project-name
+```
+
+**With environment variables:**
+```bash
+cd app
+PROJECT_NAME=sentiment-analysis \
+PROJECT_DESCRIPTION="NLP sentiment analysis API" \
+PROJECT_AUTHOR="Your Name" \
+PROJECT_VERSION=0.1.0 \
+./setup_new_project.sh
+```
+
+**Using configuration file:**
+```bash
+cd app
+cp .setup.env.example .setup.env
+# Edit .setup.env with your values
+source .setup.env && ./setup_new_project.sh
+```
+
+**Available environment variables:**
+- `PROJECT_NAME` - Project name (required)
+- `PROJECT_DESCRIPTION` - Project description (optional)
+- `PROJECT_AUTHOR` - Author name (optional)
+- `PROJECT_VERSION` - Initial version (default: 1.0.0)
+- `SKIP_GIT_INIT` - Set to "true" to skip git initialization
+- `SKIP_ENV_SETUP` - Set to "true" to skip .env file creation
 
 ### Adding Your First AI Feature
 
@@ -152,7 +221,7 @@ This template includes:
 - ✅ Flask application structure
 - ✅ Docker setup with corporate certificate support
 - ✅ Makefile for common commands
-- ✅ Security best practices (.gitignore, SECURITY.md)
+- ✅ Security best practices (.gitignore, docs/SECURITY.md)
 - ✅ Health check endpoints
 - ✅ Environment variable configuration
 - ✅ Project structure (routes, models, utils)
@@ -183,10 +252,9 @@ git merge template/main --allow-unrelated-histories
 
 ## 🆘 Getting Help
 
-- Check `README.md` for general usage
-- Check `LOCAL_SETUP.md` for local development
-- Check `SECURITY.md` for security best practices
-- Check `SECURITY.md` for security guidelines
+- Check `README.md` in the app directory for general usage
+- Check `docs/LOCAL_SETUP.md` for local development
+- Check `docs/SECURITY.md` for security best practices
 
 ## 📝 Notes for Course Instructors
 
@@ -195,7 +263,7 @@ If you're setting this up for a course:
 1. **Make it a template**: Enable "Template repository" in GitHub settings
 2. **Add to organization**: Put it in your organization's template list
 3. **Version it**: Tag releases if you make improvements
-4. **Document updates**: Keep a CHANGELOG.md for template changes
+4. **Document updates**: Keep a docs/CHANGELOG.md for template changes
 5. **Provide examples**: Consider creating example projects that use this template
 
 ---

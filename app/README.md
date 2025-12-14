@@ -2,7 +2,7 @@
 
 A production-ready Flask application framework designed for AI/ML upskilling programs. This starter template provides a solid foundation for building and deploying AI-powered applications.
 
-> **📌 This is a template repository.** See [TEMPLATE_USAGE.md](TEMPLATE_USAGE.md) for instructions on how to use this template for new projects.
+> **📌 This is a template repository.** See [docs/TEMPLATE_USAGE.md](../docs/TEMPLATE_USAGE.md) for instructions on how to use this template for new projects.
 
 ## Features
 
@@ -18,33 +18,44 @@ A production-ready Flask application framework designed for AI/ML upskilling pro
 
 ## 🚀 Quick Start for New Projects
 
-**Using this template?** See [TEMPLATE_USAGE.md](TEMPLATE_USAGE.md) for detailed instructions.
+**Using this template?** See [docs/TEMPLATE_USAGE.md](../docs/TEMPLATE_USAGE.md) for detailed instructions.
 
 **Quick steps:**
 1. Click "Use this template" on GitHub (if enabled)
 2. Or clone and customize: `git clone <repo> my-project`
-3. Run `make install` to set up
-4. Start building your AI application!
+3. **Customize your project** (optional but recommended):
+   ```bash
+   cd app
+   ./setup_new_project.sh my-project-name
+   # Or use environment variables for more control:
+   PROJECT_NAME=my-project PROJECT_DESCRIPTION="My AI Project" ./setup_new_project.sh
+   ```
+4. Run `make install` to set up
+5. Start building your AI application!
 
 ## Project Structure
 
 ```
-app/
-├── app.py                 # Main application entry point
-├── routes/                # API route blueprints
-│   ├── __init__.py
-│   └── api.py            # Example API endpoints
-├── models/                # Data models and ML model integration
-│   └── __init__.py
-├── utils/                 # Utility functions
-│   ├── __init__.py
-│   └── helpers.py        # Helper functions
-├── requirements.txt       # Python dependencies
-├── Dockerfile            # Docker configuration
-├── Makefile              # Common commands (make help to see all)
-├── .flaskenv             # Flask environment variables
-├── .gitignore            # Git ignore rules
-└── README.md             # This file
+<project-name>/
+├── docs/                  # Documentation (see docs/README.md)
+│   ├── TEMPLATE_USAGE.md
+│   ├── LOCAL_SETUP.md
+│   ├── SECURITY.md
+│   └── ...
+├── app/                   # Flask application
+│   ├── app.py            # Main application entry point
+│   ├── routes/           # API route blueprints
+│   │   ├── __init__.py
+│   │   └── api.py
+│   ├── models/           # Data models and ML model integration
+│   ├── utils/            # Utility functions
+│   ├── requirements.txt  # Python dependencies
+│   ├── Dockerfile        # Docker configuration
+│   ├── Makefile          # Common commands (make help to see all)
+│   ├── setup_new_project.sh  # Project customization script
+│   ├── .setup.env.example    # Setup script configuration template
+│   └── README.md         # This file
+└── .gitignore            # Git ignore rules
 ```
 
 ## Quick Start
@@ -52,7 +63,7 @@ app/
 ### Prerequisites
 
 - Docker installed
-- Certificate file (`Zscaler_Root_CA.cer`) in the parent directory (`ai_upskilling/`)
+- Certificate file (`Zscaler_Root_CA.cer`) in the build context directory (typically one level up from the project)
 - Make (optional but recommended - `brew install make` on macOS)
 
 ### Using Make (Recommended)
@@ -83,11 +94,13 @@ make docker-build
 ```
 
 **Manual:**
-From the `ai_upskilling` directory:
+From the parent directory (where your certificate file is located):
 
 ```bash
-docker build -f getting_started/app/Dockerfile -t flask-app .
+docker build -f <project-name>/app/Dockerfile -t flask-app .
 ```
+
+**Note:** Replace `<project-name>` with your actual project directory name. The Dockerfile assumes the build context is one level up from the `app/` directory.
 
 ### Running the Container
 
@@ -255,8 +268,10 @@ The Dockerfile is configured to:
 If your certificate file has a different name:
 
 ```bash
-docker build --build-arg CERT_FILE=your-cert.cer -f getting_started/app/Dockerfile -t flask-app .
+docker build --build-arg CERT_FILE=your-cert.cer -f <project-name>/app/Dockerfile -t flask-app .
 ```
+
+**Note:** Replace `<project-name>` with your actual project directory name.
 
 ## API Endpoints
 
@@ -316,7 +331,7 @@ Example endpoint demonstrating request/response patterns.
 
 ### Certificate Issues
 If you encounter SSL certificate errors:
-- Ensure `Zscaler_Root_CA.cer` is in the `ai_upskilling/` directory
+- Ensure `Zscaler_Root_CA.cer` is in the build context directory (one level up from the project)
 - Check that the certificate file is valid
 - Verify the build context is correct
 
@@ -330,6 +345,17 @@ If you get import errors:
 - Ensure you're in the correct directory
 - Activate your virtual environment
 - Reinstall dependencies: `pip install -r requirements.txt`
+
+## 📚 Documentation
+
+All documentation is located in the [`docs/`](../docs/) directory. See [docs/README.md](../docs/README.md) for a complete index.
+
+**Quick links:**
+- **[TEMPLATE_USAGE.md](../docs/TEMPLATE_USAGE.md)** - How to use this template for new projects
+- **[LOCAL_SETUP.md](../docs/LOCAL_SETUP.md)** - Local development setup guide
+- **[SECURITY.md](../docs/SECURITY.md)** - Security best practices and checklist
+- **[TEMPLATE_SETUP.md](../docs/TEMPLATE_SETUP.md)** - How to publish/maintain this template
+- **[CHANGELOG.md](../docs/CHANGELOG.md)** - Template version history
 
 ## Resources
 

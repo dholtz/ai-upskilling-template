@@ -143,7 +143,7 @@ git commit --amend
 - ✅ Certificate files (`.cer`, `.crt`, `.pem`, `.key`)
 
 ### Certificate File Location:
-The corporate certificate (`Zscaler_Root_CA.cer`) is in the parent directory (`ai_upskilling/`), which is **outside** this repository. This is correct - certificates should never be in the repo.
+The corporate certificate (`Zscaler_Root_CA.cer`) should be placed in a directory **outside** this repository (typically one level up from the project root). This is correct - certificates should never be in the repo. When building with Docker, ensure the certificate is in the build context directory.
 
 ### If You Need to Share Configuration:
 Create a `.env.example` file:
