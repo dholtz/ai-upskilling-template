@@ -73,22 +73,32 @@ else
     sed -i "s/Welcome to AI Up-Skilling Flask App/Welcome to $PROJECT_NAME/g" app.py
 fi
 
-# Update README.md
-echo "📝 Updating README.md..."
-if [[ "$OSTYPE" == "darwin"* ]]; then
-    # macOS
-    sed -i '' "s/AI Up-Skilling Flask Application Template/$PROJECT_NAME/g" README.md
-    sed -i '' "s/for AI\/ML upskilling programs/for $PROJECT_DESCRIPTION/g" README.md
-    if [ -n "$PROJECT_AUTHOR" ]; then
-        # Add author to README if provided
-        sed -i '' "s/This is a starter template for educational purposes/This is $PROJECT_NAME by $PROJECT_AUTHOR/g" README.md 2>/dev/null || true
+# Handle README.md - check if root-level README exists
+if [ -f "../README.md" ]; then
+    # Root-level README exists, remove template README.md from app/ directory
+    echo "📝 Root-level README.md detected, removing template app/README.md..."
+    if [ -f "README.md" ]; then
+        rm README.md
+        echo "   ✅ Removed template README.md (using root-level README.md instead)"
     fi
 else
-    # Linux
-    sed -i "s/AI Up-Skilling Flask Application Template/$PROJECT_NAME/g" README.md
-    sed -i "s/for AI\/ML upskilling programs/for $PROJECT_DESCRIPTION/g" README.md
-    if [ -n "$PROJECT_AUTHOR" ]; then
-        sed -i "s/This is a starter template for educational purposes/This is $PROJECT_NAME by $PROJECT_AUTHOR/g" README.md 2>/dev/null || true
+    # No root-level README, update the app/README.md
+    echo "📝 Updating README.md..."
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+        # macOS
+        sed -i '' "s/AI Up-Skilling Flask Application Template/$PROJECT_NAME/g" README.md
+        sed -i '' "s/for AI\/ML upskilling programs/for $PROJECT_DESCRIPTION/g" README.md
+        if [ -n "$PROJECT_AUTHOR" ]; then
+            # Add author to README if provided
+            sed -i '' "s/This is a starter template for educational purposes/This is $PROJECT_NAME by $PROJECT_AUTHOR/g" README.md 2>/dev/null || true
+        fi
+    else
+        # Linux
+        sed -i "s/AI Up-Skilling Flask Application Template/$PROJECT_NAME/g" README.md
+        sed -i "s/for AI\/ML upskilling programs/for $PROJECT_DESCRIPTION/g" README.md
+        if [ -n "$PROJECT_AUTHOR" ]; then
+            sed -i "s/This is a starter template for educational purposes/This is $PROJECT_NAME by $PROJECT_AUTHOR/g" README.md 2>/dev/null || true
+        fi
     fi
 fi
 
